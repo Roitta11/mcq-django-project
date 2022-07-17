@@ -15,12 +15,12 @@ Including another URLconf
 """
 from xml.etree.ElementInclude import include
 from django.contrib import admin
-from rest_framework.urlpatterns import format_suffix_patterns
 from django.urls import path
 from papers import views
 
+# nq --> number of questions
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('prs/', views.getTopic.as_view()),
-
+    # Endpoint 1 --> /mcq/board/subject/year/month/variant/nq
+    path('mcq/<str:board>/<str:subject>/<str:year>/<str:month>/<int:nq>/', views.getOnePaper.as_view()),
 ]
