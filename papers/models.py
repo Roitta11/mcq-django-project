@@ -13,7 +13,6 @@ class pastPaper(models.Model):
     answer = models.CharField(max_length=1)
     hardness = models.IntegerField()
     difficulty = models.IntegerField()
-    # p
 
 
     # Return the required paper 

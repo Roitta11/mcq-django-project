@@ -1,5 +1,4 @@
 """djangoproject URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
@@ -21,6 +20,17 @@ from papers import views
 # nq --> number of questions
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     # Endpoint 1 --> /mcq/board/subject/year/month/variant/nq
-    path('mcq/<str:board>/<str:subject>/<str:year>/<str:month>/<int:nq>/', views.getOnePaper.as_view()),
+    path('mcq/<str:board>/<str:subject>/<str:year>/<str:month>/<str:variant>/<int:nq>/', views.getOnePaper.as_view()),
+
+    # Endpoint 2 --> /mcq/board/subject/year/month/variant/question-number
+    path('mcq/<str:board>/<str:subject>/<str:year>/<str:month>/<str:variant>/<int:question_number>/', views.getEndpointTwo.as_view()),
+
+    # Endpoint 3 --> mcq/board/subject/topic/number-of-questions
+    path('mcq/<str:board>/<str:subject>/<str:topic>/<int:nq>/', views.getEndpointThree.as_view()),
+
+    # Endpoint 4 --> mcq/board/subject/number-of-questions
+    path('mcq/<str:board>/<str:subject>/<int:nq>/', views.getEndpointFour.as_view())
+    
 ]
